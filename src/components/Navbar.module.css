@@ -162,7 +162,7 @@
 .mobileMenu a:hover, .mobileMenu button:hover { background: var(--color-bg-section); }
 
 @media (max-width: 768px) {
-  .navLinks, .authBtns .btn-ghost, .userName { display: none; }
+  .navLinks, .authBtns, .userName { display: none; }
   .menuBtn { display: flex; }
   .mobileMenu { display: flex; }
 }
