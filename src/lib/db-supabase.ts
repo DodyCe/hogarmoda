@@ -287,6 +287,8 @@ export async function ensureAdminExists(): Promise<void> {
   const existing = await findUserByEmail('admin');
   if (!existing) {
     const hash = bcrypt.hashSync('libis2308', 10);
-    await createUser('Administrador', 'admin', hash);
+    await supabase.from('users').insert({ name: 'Administrador', email: 'admin', password_hash: hash, role: 'admin' });
+  } else if (existing.role !== 'admin') {
+    await supabase.from('users').update({ role: 'admin' }).eq('email', 'admin');
   }
 }

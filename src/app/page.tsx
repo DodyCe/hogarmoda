@@ -45,8 +45,8 @@ export default function HomePage() {
               <span className={styles.heroAccent}>lo mejor</span>
             </h1>
             <p className={styles.heroSub}>
-              Sábanas, cortinas, zapatos y más — entregados a tu puerta en todo Colombia.
-              Pedidos 100% contraentrega.
+              Sábanas, cortinas, zapatos y más — entregados a tu puerta
+              en toda Montería. Pedidos 100% contraentrega.
             </p>
             <div className={styles.heroActions}>
               <Link href="/catalogo" className="btn btn-primary btn-lg">
