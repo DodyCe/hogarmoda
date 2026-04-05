@@ -11,6 +11,7 @@ import CheckoutModal from '@/components/CheckoutModal';
 import type { Product, Catalog } from '@/lib/types';
 import { formatCOP } from '@/lib/utils';
 import { useCart } from '@/context/CartContext';
+import SizePicker from '@/components/SizePicker';
 import styles from './page.module.css';
 
 export default function ProductDetailPage() {
@@ -22,6 +23,7 @@ export default function ProductDetailPage() {
   const [loading, setLoading] = useState(true);
   const [added, setAdded] = useState(false);
   const [checkoutOpen, setCheckoutOpen] = useState(false);
+  const [showSizePicker, setShowSizePicker] = useState(false);
 
   useEffect(() => {
     fetch(`/api/products/${id}`).then((r) => {
@@ -38,7 +40,19 @@ export default function ProductDetailPage() {
 
   const handleAdd = () => {
     if (!product) return;
-    addItem(product);
+    if (product.sizeType !== 'none') {
+      setShowSizePicker(true);
+    } else {
+      addItem(product);
+      setAdded(true);
+      setTimeout(() => setAdded(false), 2000);
+    }
+  };
+
+  const handleSizeConfirm = (size: string) => {
+    if (!product) return;
+    addItem(product, size);
+    setShowSizePicker(false);
     setAdded(true);
     setTimeout(() => setAdded(false), 2000);
   };
@@ -72,6 +86,14 @@ export default function ProductDetailPage() {
       <Navbar />
       <CartSidebar onCheckout={() => setCheckoutOpen(true)} />
       {checkoutOpen && <CheckoutModal onClose={() => setCheckoutOpen(false)} />}
+
+      {showSizePicker && product && (
+        <SizePicker
+          product={product}
+          onConfirm={handleSizeConfirm}
+          onCancel={() => setShowSizePicker(false)}
+        />
+      )}
 
       <main className={styles.main}>
         <div className="container">

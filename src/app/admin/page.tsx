@@ -14,6 +14,7 @@ export default function AdminDashboard() {
   const [orders, setOrders] = useState<Order[]>([]);
   const [tab, setTab] = useState<'products' | 'catalogs' | 'orders' | 'sizes'>('products');
   const [loading, setLoading] = useState(true);
+  const [apiError, setApiError] = useState('');
   const [updatingOrder, setUpdatingOrder] = useState<string | null>(null);
 
   // Product form
@@ -38,16 +39,29 @@ export default function AdminDashboard() {
 
   const loadData = async () => {
     setLoading(true);
-    const [prods, cats, ords, presets] = await Promise.all([
-      fetch('/api/products').then((r) => r.json()),
-      fetch('/api/catalogs').then((r) => r.json()),
-      fetch('/api/orders').then((r) => r.json()),
-      fetch('/api/size-presets').then((r) => r.json()),
-    ]);
-    setProducts(prods);
-    setCatalogs(cats);
-    setOrders(ords);
-    setSizePresets(presets);
+    setApiError('');
+    try {
+      const [prods, cats, ords, presets] = await Promise.all([
+        fetch('/api/products').then((r) => r.json()).catch(() => ({ error: 'Error de red' })),
+        fetch('/api/catalogs').then((r) => r.json()).catch(() => ({ error: 'Error de red' })),
+        fetch('/api/orders').then((r) => r.json()).catch(() => ({ error: 'Error de red' })),
+        fetch('/api/size-presets').then((r) => r.json()).catch(() => ({ error: 'Error de red' })),
+      ]);
+
+      const checkError = (data: any) => data?.error ? data.error : false;
+      const dbError = checkError(prods) || checkError(cats);
+      
+      if (dbError) {
+        setApiError(`No se pudo conectar a la base de datos: ${dbError}. Revisa las credenciales de Supabase en Vercel.`);
+      }
+
+      setProducts(Array.isArray(prods) ? prods : []);
+      setCatalogs(Array.isArray(cats) ? cats : []);
+      setOrders(Array.isArray(ords) ? ords : []);
+      setSizePresets(Array.isArray(presets) ? presets : []);
+    } catch (e) {
+      setApiError('Fallo al cargar datos.');
+    }
     setLoading(false);
   };
 
@@ -186,6 +200,11 @@ export default function AdminDashboard() {
 
       {/* Main */}
       <main className={styles.main}>
+        {apiError && (
+          <div style={{ padding: '15px 20px', background: '#fee2e2', color: '#b91c1c', borderRadius: '8px', marginBottom: '20px', border: '1px solid #f87171' }}>
+            ⚠️ <strong>Alerta:</strong> {apiError}
+          </div>
+        )}
         {/* ── Products Tab ── */}
         {tab === 'products' && (
           <div className={styles.tabContent}>

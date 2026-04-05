@@ -12,6 +12,7 @@ export default function RegisterPage() {
   const [form, setForm] = useState({ name: '', email: '', password: '', confirm: '' });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   if (user) { router.replace('/'); return null; }
 
@@ -46,11 +47,17 @@ export default function RegisterPage() {
           </div>
           <div className="form-group">
             <label className="form-label">Contraseña</label>
-            <input className="form-input" type="password" value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} placeholder="Mínimo 6 caracteres" id="register-password" required />
+            <div style={{ position: 'relative' }}>
+              <input className="form-input" type={showPassword ? 'text' : 'password'} value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} placeholder="Mínimo 6 caracteres" id="register-password" required minLength={6} style={{ paddingRight: '40px' }} />
+              <button type="button" onClick={() => setShowPassword(!showPassword)} style={{ position: 'absolute', right: '12px', top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', cursor: 'pointer', fontSize: '1.2rem', opacity: 0.6 }} tabIndex={-1}>{showPassword ? '🫣' : '👁️'}</button>
+            </div>
           </div>
           <div className="form-group">
             <label className="form-label">Confirmar contraseña</label>
-            <input className="form-input" type="password" value={form.confirm} onChange={(e) => setForm({ ...form, confirm: e.target.value })} placeholder="Repite tu contraseña" id="register-confirm" required />
+            <div style={{ position: 'relative' }}>
+              <input className="form-input" type={showPassword ? 'text' : 'password'} value={form.confirm} onChange={(e) => setForm({ ...form, confirm: e.target.value })} placeholder="Repite tu contraseña" id="register-confirm" required style={{ paddingRight: '40px' }} />
+              <button type="button" onClick={() => setShowPassword(!showPassword)} style={{ position: 'absolute', right: '12px', top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', cursor: 'pointer', fontSize: '1.2rem', opacity: 0.6 }} tabIndex={-1}>{showPassword ? '🫣' : '👁️'}</button>
+            </div>
           </div>
           <button type="submit" className="btn btn-primary btn-lg" style={{ width: '100%' }} disabled={loading} id="register-submit">
             {loading ? 'Creando cuenta…' : 'Crear cuenta →'}

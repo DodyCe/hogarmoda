@@ -12,6 +12,7 @@ export default function LoginPage() {
   const [form, setForm] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   if (user) {
     if (user.role === 'admin') router.replace('/admin');
@@ -58,15 +59,26 @@ export default function LoginPage() {
           </div>
           <div className="form-group">
             <label className="form-label">Contraseña</label>
-            <input
-              className="form-input"
-              type="password"
-              value={form.password}
-              onChange={(e) => setForm({ ...form, password: e.target.value })}
-              placeholder="Tu contraseña"
-              id="login-password"
-              required
-            />
+            <div style={{ position: 'relative' }}>
+              <input
+                className="form-input"
+                type={showPassword ? 'text' : 'password'}
+                value={form.password}
+                onChange={(e) => setForm({ ...form, password: e.target.value })}
+                placeholder="Tu contraseña"
+                id="login-password"
+                required
+                style={{ paddingRight: '40px' }}
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                style={{ position: 'absolute', right: '12px', top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', cursor: 'pointer', fontSize: '1.2rem', opacity: 0.6 }}
+                tabIndex={-1}
+              >
+                {showPassword ? '🫣' : '👁️'}
+              </button>
+            </div>
           </div>
           <button type="submit" className="btn btn-primary btn-lg" style={{ width: '100%' }} disabled={loading} id="login-submit">
             {loading ? 'Ingresando…' : 'Ingresar →'}
@@ -76,10 +88,6 @@ export default function LoginPage() {
         <p className={styles.switchLink}>
           ¿No tienes cuenta? <Link href="/registro">Regístrate aquí</Link>
         </p>
-
-        <div className={styles.adminHint}>
-          <strong>Admin:</strong> usuario <code>admin</code> / contraseña <code>libis2308</code>
-        </div>
       </div>
     </div>
   );
