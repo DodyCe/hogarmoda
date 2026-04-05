@@ -1,5 +1,5 @@
 // ============================================================
-// MIDDLEWARE — Livende
+// PROXY — Livende
 // Protege las rutas /admin/* y verifica el JWT desde la cookie.
 // ============================================================
 
@@ -7,7 +7,7 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { verifyToken } from '@/lib/auth';
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Proteger SOLO las rutas /admin
