@@ -12,7 +12,7 @@ export async function GET() {
     const payload = await verifyToken(token);
     if (!payload) return NextResponse.json(null);
 
-    const user = await findUserById(payload.sub);
+    const user = await findUserById(payload.userId);
     if (!user) return NextResponse.json(null);
 
     return NextResponse.json({ id: user.id, name: user.name, email: user.email, role: user.role });

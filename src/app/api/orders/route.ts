@@ -15,7 +15,7 @@ export async function GET() {
   const payload = await getAuthPayload();
   if (!payload) return NextResponse.json({ error: 'No autenticado' }, { status: 401 });
   if (payload.role === 'admin') return NextResponse.json(await getAllOrders());
-  return NextResponse.json(await getOrdersByUser(payload.sub));
+  return NextResponse.json(await getOrdersByUser(payload.userId));
 }
 
 export async function POST(request: NextRequest) {
@@ -36,7 +36,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'El pedido debe tener al menos un producto' }, { status: 400 });
 
     const order = await createOrder({
-      userId: payload?.sub,
+      userId: payload?.userId,
       customerName, phone, address, notes,
       items,
       total: Number(total),

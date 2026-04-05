@@ -35,6 +35,6 @@ export async function GET(_req: NextRequest, { params }: { params: Promise<{ id:
   const { id } = await params;
   const order = await getOrderById(id);
   if (!order) return NextResponse.json({ error: 'Pedido no encontrado' }, { status: 404 });
-  if (payload.role !== 'admin' && order.userId !== payload.sub) return NextResponse.json({ error: 'No autorizado' }, { status: 403 });
+  if (payload.role !== 'admin' && order.userId !== payload.userId) return NextResponse.json({ error: 'No autorizado' }, { status: 403 });
   return NextResponse.json(order);
 }

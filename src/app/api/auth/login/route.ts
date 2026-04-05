@@ -19,7 +19,7 @@ export async function POST(request: NextRequest) {
     const valid = bcrypt.compareSync(password, user.passwordHash);
     if (!valid) return NextResponse.json({ error: 'Credenciales incorrectas' }, { status: 401 });
 
-    const token = await signToken({ sub: user.id, email: user.email, role: user.role });
+    const token = await signToken({ userId: user.id, email: user.email, role: user.role, name: user.name });
 
     const cookieStore = await cookies();
     cookieStore.set('hm_token', token, {
