@@ -39,7 +39,7 @@ export default function HomePage() {
         <section className={styles.hero}>
           <div className={styles.heroBg} />
           <div className={`container ${styles.heroContent}`}>
-            <span className={styles.heroBadge}>✨ Nuevas colecciones 2025</span>
+            <span className={styles.heroBadge}>✨ Nuevas colecciones 2026</span>
             <h1 className={styles.heroTitle}>
               Tu hogar merece<br />
               <span className={styles.heroAccent}>lo mejor</span>
