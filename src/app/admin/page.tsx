@@ -13,6 +13,7 @@ export default function AdminDashboard() {
   const [catalogs, setCatalogs] = useState<Catalog[]>([]);
   const [orders, setOrders] = useState<Order[]>([]);
   const [tab, setTab] = useState<'products' | 'catalogs' | 'orders' | 'sizes'>('products');
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [apiError, setApiError] = useState('');
   const [updatingOrder, setUpdatingOrder] = useState<string | null>(null);
@@ -173,21 +174,31 @@ export default function AdminDashboard() {
 
   return (
     <div className={styles.layout}>
+      {/* Sidebar Toggle for Mobile */}
+      <button className={styles.mobileSidebarBtn} onClick={() => setSidebarOpen(!sidebarOpen)} aria-label="Menú de Administración">
+        <span className={`${styles.bar} ${sidebarOpen ? styles.open1 : ''}`} />
+        <span className={`${styles.bar} ${sidebarOpen ? styles.open2 : ''}`} />
+        <span className={`${styles.bar} ${sidebarOpen ? styles.open3 : ''}`} />
+      </button>
+
+      {/* Overlay for mobile sidebar */}
+      {sidebarOpen && <div className={styles.sidebarOverlay} onClick={() => setSidebarOpen(false)} />}
+
       {/* Sidebar */}
-      <aside className={styles.sidebar}>
+      <aside className={`${styles.sidebar} ${sidebarOpen ? styles.sidebarOpen : ''}`}>
         <div className={styles.sidebarLogo}>🏠 Livende</div>
         <p className={styles.sidebarSub}>Panel de Administración</p>
         <nav className={styles.nav}>
-          <button className={`${styles.navItem} ${tab === 'products' ? styles.active : ''}`} onClick={() => setTab('products')}>
+          <button className={`${styles.navItem} ${tab === 'products' ? styles.active : ''}`} onClick={() => { setTab('products'); setSidebarOpen(false); }}>
             📦 Productos <span className={styles.navCount}>{products.length}</span>
           </button>
-          <button className={`${styles.navItem} ${tab === 'catalogs' ? styles.active : ''}`} onClick={() => setTab('catalogs')}>
+          <button className={`${styles.navItem} ${tab === 'catalogs' ? styles.active : ''}`} onClick={() => { setTab('catalogs'); setSidebarOpen(false); }}>
             📂 Catálogos <span className={styles.navCount}>{catalogs.length}</span>
           </button>
-          <button className={`${styles.navItem} ${tab === 'orders' ? styles.active : ''}`} onClick={() => setTab('orders')}>
+          <button className={`${styles.navItem} ${tab === 'orders' ? styles.active : ''}`} onClick={() => { setTab('orders'); setSidebarOpen(false); }}>
             🧾 Pedidos <span className={styles.navCount}>{orders.length}</span>
           </button>
-          <button className={`${styles.navItem} ${tab === 'sizes' ? styles.active : ''}`} onClick={() => setTab('sizes' as 'products')}>
+          <button className={`${styles.navItem} ${tab === 'sizes' ? styles.active : ''}`} onClick={() => { setTab('sizes' as any); setSidebarOpen(false); }}>
             📏 Tallas/Medidas <span className={styles.navCount}>{sizePresets.length}</span>
           </button>
         </nav>

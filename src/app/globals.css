@@ -298,6 +298,6 @@ ul { list-style: none; }
   .catalog-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
 }
 @media (max-width: 480px) {
-  .product-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .product-grid { grid-template-columns: 1fr; gap: 20px; }
   .catalog-grid { grid-template-columns: 1fr 1fr; }
 }
