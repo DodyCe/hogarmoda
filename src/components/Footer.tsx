@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className={styles.footer}>
       <div className={`container ${styles.inner}`}>
         <div className={styles.brand}>
-          <div className={styles.logo}>🏠 Hogar<strong>Moda</strong></div>
+          <div className={styles.logo}>🏠 Livende</div>
           <p>Tu tienda de hogar y moda con entrega contraentrega en toda Colombia.</p>
           <a
             href="https://wa.me/573165517051"
@@ -36,7 +36,7 @@ export default function Footer() {
         </div>
       </div>
       <div className={styles.bottom}>
-        <p>© {new Date().getFullYear()} HogarModa. Todos los derechos reservados.</p>
+        <p>© {new Date().getFullYear()} Livende. Todos los derechos reservados.</p>
         <p>📞 WhatsApp: +57 316 551 7051 · Entregas contraentrega en Colombia</p>
       </div>
     </footer>

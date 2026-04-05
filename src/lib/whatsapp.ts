@@ -1,5 +1,5 @@
 // ============================================================
-// WHATSAPP INTEGRATION — HogarModa
+// WHATSAPP INTEGRATION — Livende
 // Genera un enlace WhatsApp API con el resumen del pedido.
 // Número del vendedor: 3165517051 (Colombia +57)
 // ============================================================
@@ -35,7 +35,7 @@ export function generateWhatsAppLink(order: OrderDetails): string {
     .join('\n');
 
   const message = `
-🛍️ *NUEVO PEDIDO — HogarModa*
+🛍️ *NUEVO PEDIDO — Livende*
 ━━━━━━━━━━━━━━━━━━━━
 
 👤 *Cliente:* ${order.customerName}

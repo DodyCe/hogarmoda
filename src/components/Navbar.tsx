@@ -24,7 +24,7 @@ export default function Navbar() {
         <div className={`container ${styles.inner}`}>
           <Link href="/" className={styles.logo}>
             <span className={styles.logoIcon}>🏠</span>
-            <span>Hogar<strong>Moda</strong></span>
+            <span>Livende</span>
           </Link>
 
           <div className={styles.navLinks}>

@@ -1,5 +1,5 @@
 // ============================================================
-// TypeScript Interfaces — HogarModa
+// TypeScript Interfaces — Livende
 // ============================================================
 
 export type SizeType = 'none' | 'shoes' | 'curtains' | 'accessories';

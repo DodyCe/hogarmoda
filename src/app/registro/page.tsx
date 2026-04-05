@@ -29,7 +29,7 @@ export default function RegisterPage() {
   return (
     <div className={styles.page}>
       <div className={styles.card}>
-        <Link href="/" className={styles.logo}>🏠 Hogar<strong>Moda</strong></Link>
+        <Link href="/" className={styles.logo}>🏠 Livende</Link>
         <h1 className={styles.title}>Crear cuenta</h1>
         <p className={styles.sub}>Únete y empieza a comprar</p>
 

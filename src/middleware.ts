@@ -1,5 +1,5 @@
 // ============================================================
-// MIDDLEWARE — HogarModa
+// MIDDLEWARE — Livende
 // Protege las rutas /admin/* y verifica el JWT desde la cookie.
 // ============================================================
 

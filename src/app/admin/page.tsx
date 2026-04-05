@@ -161,7 +161,7 @@ export default function AdminDashboard() {
     <div className={styles.layout}>
       {/* Sidebar */}
       <aside className={styles.sidebar}>
-        <div className={styles.sidebarLogo}>🏠 Hogar<strong>Moda</strong></div>
+        <div className={styles.sidebarLogo}>🏠 Livende</div>
         <p className={styles.sidebarSub}>Panel de Administración</p>
         <nav className={styles.nav}>
           <button className={`${styles.navItem} ${tab === 'products' ? styles.active : ''}`} onClick={() => setTab('products')}>

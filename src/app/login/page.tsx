@@ -36,7 +36,7 @@ export default function LoginPage() {
   return (
     <div className={styles.page}>
       <div className={styles.card}>
-        <Link href="/" className={styles.logo}>🏠 Hogar<strong>Moda</strong></Link>
+        <Link href="/" className={styles.logo}>🏠 Livende</Link>
         <h1 className={styles.title}>Iniciar sesión</h1>
         <p className={styles.sub}>Bienvenido de nuevo</p>
 

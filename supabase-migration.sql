@@ -1,5 +1,5 @@
 -- ============================================================
--- HogarModa — Supabase Migration
+-- Livende — Supabase Migration
 -- Ejecutar en Supabase → SQL Editor
 -- ============================================================
 

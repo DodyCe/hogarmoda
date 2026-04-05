@@ -1,5 +1,5 @@
 // ============================================================
-// IN-MEMORY DATABASE — HogarModa
+// IN-MEMORY DATABASE — Livende
 // Para conectar una DB real: reemplazar estas funciones CRUD
 // por llamadas a Prisma (PostgreSQL), Mongoose, Supabase o Firebase SDK.
 // ============================================================
