@@ -1,0 +1,20 @@
+.main { padding: calc(var(--navbar-height) + 48px) 0 80px; min-height: 70vh; }
+.header { margin-bottom: 40px; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+.card { display: block; border-radius: var(--radius-lg); overflow: hidden; }
+.imgWrap { position: relative; aspect-ratio: 3/2; }
+.img { object-fit: cover; transition: transform var(--transition-slow); }
+.card:hover .img { transform: scale(1.07); }
+.overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.1) 60%);
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 24px; color: #fff; gap: 4px;
+}
+.overlay h2 { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 700; }
+.overlay p { font-size: 0.85rem; opacity: 0.8; }
+.cta { font-size: 0.85rem; font-weight: 700; color: var(--color-primary-light); margin-top: 4px; }

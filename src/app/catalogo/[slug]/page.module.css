@@ -1,0 +1,24 @@
+.main { padding: calc(var(--navbar-height) + 48px) 0 80px; min-height: 70vh; }
+.header { margin-bottom: 40px; }
+.count {
+  display: inline-flex;
+  margin-top: 8px;
+  background: rgba(200, 121, 74, 0.1);
+  color: var(--color-primary);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+}
+.loading { padding: 40px 0; }
+.notFound, .empty {
+  text-align: center;
+  padding: 80px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: var(--color-text-muted);
+}
+.notFound span, .empty span { font-size: 3rem; }
+.notFound h2 { font-size: 1.5rem; color: var(--color-text); }

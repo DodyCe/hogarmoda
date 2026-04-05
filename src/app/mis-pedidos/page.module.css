@@ -1,0 +1,95 @@
+.main { padding: calc(var(--navbar-height) + 48px) 0 80px; min-height: 70vh; }
+
+.grid { display: flex; flex-direction: column; gap: 20px; }
+
+.card {
+  background: var(--color-bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+  transition: box-shadow var(--transition);
+}
+.card:hover { box-shadow: var(--shadow-md); }
+
+.cardHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 18px 20px 12px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.orderId {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 700;
+  display: block;
+}
+
+.date {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  display: block;
+  margin-top: 2px;
+}
+
+.status {
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 5px 14px;
+  border-radius: var(--radius-full);
+  border: 1.5px solid;
+  white-space: nowrap;
+}
+
+.items {
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  padding: 12px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.88rem;
+}
+.itemName { flex: 1; color: var(--color-text); }
+.itemQty { color: var(--color-text-muted); white-space: nowrap; }
+.itemPrice { font-weight: 700; color: var(--color-primary); white-space: nowrap; font-family: var(--font-heading); }
+
+.cardFoot {
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.delivery { display: flex; flex-direction: column; gap: 2px; }
+.delivery span { font-size: 0.82rem; color: var(--color-text-muted); }
+
+.total { font-size: 0.95rem; color: var(--color-text-muted); }
+.total strong { font-family: var(--font-heading); font-size: 1.1rem; color: var(--color-primary); }
+
+.pendingNote  { padding: 10px 20px; background: rgba(232, 160, 32, 0.08); font-size: 0.85rem; color: #8a5e00; border-top: 1px solid rgba(232, 160, 32, 0.2); }
+.confirmedNote { padding: 10px 20px; background: rgba(76, 175, 125, 0.08); font-size: 0.85rem; color: #1a7a3c; border-top: 1px solid rgba(76, 175, 125, 0.2); }
+.shippedNote  { padding: 10px 20px; background: rgba(33, 150, 243, 0.08); font-size: 0.85rem; color: #0d5fa3; border-top: 1px solid rgba(33, 150, 243, 0.2); }
+.cancelledNote { padding: 10px 20px; background: rgba(224, 82, 82, 0.08); font-size: 0.85rem; color: #a02020; border-top: 1px solid rgba(224, 82, 82, 0.2); }
+
+.empty, .notAuth {
+  text-align: center;
+  padding: 80px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  color: var(--color-text-muted);
+}
+.empty span, .notAuth span { font-size: 3rem; }
+.empty h2, .notAuth h2 { font-size: 1.4rem; color: var(--color-text); }
